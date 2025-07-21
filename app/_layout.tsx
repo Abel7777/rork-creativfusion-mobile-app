@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/context/ThemeProvider";
 import { AuthProvider, useAuth } from "@/context/AuthProvider";
 import { LanguageProvider } from "@/context/LanguageProvider";
 import { Redirect } from "expo-router";
+import { trpc, trpcClient } from "@/lib/trpc";
 import '@/config/i18n';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -49,17 +50,19 @@ export default function RootLayout() {
   }, []);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <LanguageProvider>
-        <AuthProvider>
-          <ThemeProvider>
-            <StatusBar style="light" />
-            <GestureHandlerRootView style={{ flex: 1 }}>
-              <AppContent />
-            </GestureHandlerRootView>
-          </ThemeProvider>
-        </AuthProvider>
-      </LanguageProvider>
-    </QueryClientProvider>
+    <trpc.Provider client={trpcClient} queryClient={queryClient}>
+      <QueryClientProvider client={queryClient}>
+        <LanguageProvider>
+          <AuthProvider>
+            <ThemeProvider>
+              <StatusBar style="light" />
+              <GestureHandlerRootView style={{ flex: 1 }}>
+                <AppContent />
+              </GestureHandlerRootView>
+            </ThemeProvider>
+          </AuthProvider>
+        </LanguageProvider>
+      </QueryClientProvider>
+    </trpc.Provider>
   );
 }
