@@ -1,25 +1,38 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { Stack } from 'expo-router';
 import { useTheme } from '@/context/ThemeProvider';
+import { useLanguage } from '@/context/LanguageProvider';
 import Typography from '@/components/Typography';
 import Button from '@/components/Button';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 export default function ShowcaseScreen() {
   const theme = useTheme();
+  const { t } = useLanguage();
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.colors.primaryBackground }]}>
-      <Typography variant="heading" style={styles.title}>
-        Showcase
-      </Typography>
-      <Typography variant="body" style={styles.description}>
-        Discover creative works and get inspired
-      </Typography>
-      <Button 
-        title="Explore" 
-        style={styles.button} 
+    <>
+      <Stack.Screen 
+        options={{ 
+          title: t('showcase.title'),
+          headerShown: true,
+          headerRight: () => <LanguageSwitcher />,
+        }} 
       />
-    </View>
+      <View style={[styles.container, { backgroundColor: theme.colors.primaryBackground }]}>
+        <Typography variant="heading" style={styles.title}>
+          {t('showcase.title')}
+        </Typography>
+        <Typography variant="body" style={styles.description}>
+          {t('showcase.description')}
+        </Typography>
+        <Button 
+          title={t('showcase.explore')} 
+          style={styles.button} 
+        />
+      </View>
+    </>
   );
 }
 

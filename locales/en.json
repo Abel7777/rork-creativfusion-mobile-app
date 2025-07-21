@@ -1,0 +1,54 @@
+{
+  "navigation": {
+    "showcase": "Showcase",
+    "store": "Store",
+    "coCreator": "Co-Creator",
+    "vault": "Vault",
+    "concierge": "Concierge"
+  },
+  "login": {
+    "welcome": "Welcome Back",
+    "signInToContinue": "Sign in to continue to CreativFusion",
+    "email": "Email",
+    "password": "Password",
+    "signIn": "Sign In",
+    "createAccount": "Create Account",
+    "fillAllFields": "Please fill in all fields"
+  },
+  "signup": {
+    "createAccount": "Create Account",
+    "join": "Join CreativFusion and start creating",
+    "confirmPassword": "Confirm Password",
+    "passwordsDoNotMatch": "Passwords do not match",
+    "fillAllFields": "Please fill in all fields",
+    "alreadyHaveAccount": "Already have an account? Sign In"
+  },
+  "showcase": {
+    "title": "Showcase",
+    "description": "Discover creative works and get inspired",
+    "explore": "Explore"
+  },
+  "store": {
+    "title": "Store",
+    "description": "Browse and purchase creative assets",
+    "shopNow": "Shop Now"
+  },
+  "coCreator": {
+    "title": "Co-Creator",
+    "description": "Create and collaborate on new projects",
+    "startCreating": "Start Creating"
+  },
+  "vault": {
+    "title": "Vault",
+    "description": "Access your secured creative assets",
+    "openVault": "Open Vault"
+  },
+  "concierge": {
+    "title": "Concierge",
+    "description": "Get personalized assistance and support",
+    "contact": "Contact"
+  },
+  "common": {
+    "error": "Error"
+  }
+}

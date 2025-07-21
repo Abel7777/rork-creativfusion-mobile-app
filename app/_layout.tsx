@@ -6,7 +6,9 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import { ThemeProvider } from "@/context/ThemeProvider";
 import { AuthProvider, useAuth } from "@/context/AuthProvider";
+import { LanguageProvider } from "@/context/LanguageProvider";
 import { Redirect } from "expo-router";
+import '@/config/i18n';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -48,14 +50,16 @@ export default function RootLayout() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <ThemeProvider>
-          <StatusBar style="light" />
-          <GestureHandlerRootView style={{ flex: 1 }}>
-            <AppContent />
-          </GestureHandlerRootView>
-        </ThemeProvider>
-      </AuthProvider>
+      <LanguageProvider>
+        <AuthProvider>
+          <ThemeProvider>
+            <StatusBar style="light" />
+            <GestureHandlerRootView style={{ flex: 1 }}>
+              <AppContent />
+            </GestureHandlerRootView>
+          </ThemeProvider>
+        </AuthProvider>
+      </LanguageProvider>
     </QueryClientProvider>
   );
 }

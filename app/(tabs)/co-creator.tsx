@@ -1,22 +1,24 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { useTheme } from '@/context/ThemeProvider';
+import { useLanguage } from '@/context/LanguageProvider';
 import Typography from '@/components/Typography';
 import Button from '@/components/Button';
 
 export default function CoCreatorScreen() {
   const theme = useTheme();
+  const { t } = useLanguage();
 
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.primaryBackground }]}>
       <Typography variant="heading" style={styles.title}>
-        Co-Creator
+        {t('coCreator.title')}
       </Typography>
       <Typography variant="body" style={styles.description}>
-        Create and collaborate on new projects
+        {t('coCreator.description')}
       </Typography>
       <Button 
-        title="Start Creating" 
+        title={t('coCreator.startCreating')} 
         style={styles.button} 
       />
     </View>

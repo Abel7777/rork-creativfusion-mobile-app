@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, Alert } from 'react-native';
 import { useTheme } from '@/context/ThemeProvider';
 import { useAuth } from '@/context/AuthProvider';
+import { useLanguage } from '@/context/LanguageProvider';
 import Typography from '@/components/Typography';
 import Button from '@/components/Button';
 import { router } from 'expo-router';
@@ -9,18 +10,19 @@ import { router } from 'expo-router';
 export default function SignupScreen() {
   const theme = useTheme();
   const { login } = useAuth();
+  const { t } = useLanguage();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleSignup = () => {
     if (!email || !password || !confirmPassword) {
-      Alert.alert('Error', 'Please fill in all fields');
+      Alert.alert(t('common.error'), t('signup.fillAllFields'));
       return;
     }
     
     if (password !== confirmPassword) {
-      Alert.alert('Error', 'Passwords do not match');
+      Alert.alert(t('common.error'), t('signup.passwordsDoNotMatch'));
       return;
     }
     
@@ -37,10 +39,10 @@ export default function SignupScreen() {
     <View style={[styles.container, { backgroundColor: theme.colors.primaryBackground }]}>
       <View style={styles.content}>
         <Typography variant="heading" style={styles.title}>
-          Create Account
+          {t('signup.createAccount')}
         </Typography>
         <Typography variant="body" style={[styles.subtitle, { color: theme.colors.secondaryText }]}>
-          Join CreativFusion and start creating
+          {t('signup.join')}
         </Typography>
 
         <View style={styles.form}>
@@ -50,7 +52,7 @@ export default function SignupScreen() {
               color: theme.colors.primaryText,
               borderColor: 'rgba(255, 255, 255, 0.2)'
             }]}
-            placeholder="Email"
+            placeholder={t('login.email')}
             placeholderTextColor={theme.colors.secondaryText}
             value={email}
             onChangeText={setEmail}
@@ -64,7 +66,7 @@ export default function SignupScreen() {
               color: theme.colors.primaryText,
               borderColor: 'rgba(255, 255, 255, 0.2)'
             }]}
-            placeholder="Password"
+            placeholder={t('login.password')}
             placeholderTextColor={theme.colors.secondaryText}
             value={password}
             onChangeText={setPassword}
@@ -77,7 +79,7 @@ export default function SignupScreen() {
               color: theme.colors.primaryText,
               borderColor: 'rgba(255, 255, 255, 0.2)'
             }]}
-            placeholder="Confirm Password"
+            placeholder={t('signup.confirmPassword')}
             placeholderTextColor={theme.colors.secondaryText}
             value={confirmPassword}
             onChangeText={setConfirmPassword}
@@ -85,13 +87,13 @@ export default function SignupScreen() {
           />
 
           <Button 
-            title="Create Account" 
+            title={t('signup.createAccount')} 
             onPress={handleSignup}
             style={styles.signupButton}
           />
 
           <Button 
-            title="Already have an account? Sign In" 
+            title={t('signup.alreadyHaveAccount')} 
             onPress={handleSignInPress}
             style={[styles.loginButton, { backgroundColor: 'transparent', borderWidth: 1, borderColor: theme.colors.accent }]}
             textStyle={{ color: theme.colors.accent }}

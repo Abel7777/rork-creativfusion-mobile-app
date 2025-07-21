@@ -1,22 +1,24 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { useTheme } from '@/context/ThemeProvider';
+import { useLanguage } from '@/context/LanguageProvider';
 import Typography from '@/components/Typography';
 import Button from '@/components/Button';
 
 export default function ConciergeScreen() {
   const theme = useTheme();
+  const { t } = useLanguage();
 
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.primaryBackground }]}>
       <Typography variant="heading" style={styles.title}>
-        Concierge
+        {t('concierge.title')}
       </Typography>
       <Typography variant="body" style={styles.description}>
-        Get personalized assistance and support
+        {t('concierge.description')}
       </Typography>
       <Button 
-        title="Contact" 
+        title={t('concierge.contact')} 
         style={styles.button} 
       />
     </View>

@@ -1,0 +1,54 @@
+{
+  "navigation": {
+    "showcase": "Schaufenster",
+    "store": "Manufaktur",
+    "coCreator": "Co-Creator",
+    "vault": "Tresor",
+    "concierge": "Salon"
+  },
+  "login": {
+    "welcome": "Willkommen zurück",
+    "signInToContinue": "Melden Sie sich an, um fortzufahren",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "signIn": "Anmelden",
+    "createAccount": "Konto erstellen",
+    "fillAllFields": "Bitte füllen Sie alle Felder aus"
+  },
+  "signup": {
+    "createAccount": "Konto erstellen",
+    "join": "Treten Sie CreativFusion bei und beginnen Sie zu gestalten",
+    "confirmPassword": "Passwort bestätigen",
+    "passwordsDoNotMatch": "Passwörter stimmen nicht überein",
+    "fillAllFields": "Bitte füllen Sie alle Felder aus",
+    "alreadyHaveAccount": "Haben Sie bereits ein Konto? Anmelden"
+  },
+  "showcase": {
+    "title": "Schaufenster",
+    "description": "Entdecken Sie kreative Werke und lassen Sie sich inspirieren",
+    "explore": "Erkunden"
+  },
+  "store": {
+    "title": "Manufaktur",
+    "description": "Durchsuchen und kaufen Sie kreative Assets",
+    "shopNow": "Jetzt einkaufen"
+  },
+  "coCreator": {
+    "title": "Co-Creator",
+    "description": "Erstellen und arbeiten Sie an neuen Projekten zusammen",
+    "startCreating": "Mit dem Erstellen beginnen"
+  },
+  "vault": {
+    "title": "Tresor",
+    "description": "Greifen Sie auf Ihre gesicherten kreativen Assets zu",
+    "openVault": "Tresor öffnen"
+  },
+  "concierge": {
+    "title": "Salon",
+    "description": "Erhalten Sie persönliche Unterstützung und Support",
+    "contact": "Kontakt"
+  },
+  "common": {
+    "error": "Fehler"
+  }
+}

@@ -1,10 +1,12 @@
 import { Tabs } from "expo-router";
 import React from "react";
 import { useTheme } from "@/context/ThemeProvider";
+import { useLanguage } from "@/context/LanguageProvider";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function TabLayout() {
   const theme = useTheme();
+  const { t } = useLanguage();
 
   return (
     <Tabs
@@ -31,7 +33,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="showcase"
         options={{
-          title: "Showcase",
+          title: t('navigation.showcase'),
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="diamond-outline" size={size} color={color} />
           ),
@@ -40,7 +42,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="store"
         options={{
-          title: "Store",
+          title: t('navigation.store'),
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="cart-outline" size={size} color={color} />
           ),
@@ -49,7 +51,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="co-creator"
         options={{
-          title: "Co-Creator",
+          title: t('navigation.coCreator'),
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="color-palette-outline" size={size} color={color} />
           ),
@@ -58,7 +60,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="vault"
         options={{
-          title: "Vault",
+          title: t('navigation.vault'),
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="lock-closed-outline" size={size} color={color} />
           ),
@@ -67,7 +69,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="concierge"
         options={{
-          title: "Concierge",
+          title: t('navigation.concierge'),
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="chatbubble-ellipses-outline" size={size} color={color} />
           ),

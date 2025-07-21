@@ -1,22 +1,24 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { useTheme } from '@/context/ThemeProvider';
+import { useLanguage } from '@/context/LanguageProvider';
 import Typography from '@/components/Typography';
 import Button from '@/components/Button';
 
 export default function StoreScreen() {
   const theme = useTheme();
+  const { t } = useLanguage();
 
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.primaryBackground }]}>
       <Typography variant="heading" style={styles.title}>
-        Store
+        {t('store.title')}
       </Typography>
       <Typography variant="body" style={styles.description}>
-        Browse and purchase creative assets
+        {t('store.description')}
       </Typography>
       <Button 
-        title="Shop Now" 
+        title={t('store.shopNow')} 
         style={styles.button} 
       />
     </View>
