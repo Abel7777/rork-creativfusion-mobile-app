@@ -1,7 +1,7 @@
 import createContextHook from '@nkzw/create-context-hook';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import * as Localization from 'expo-localization';
+import { getLocales } from 'expo-localization';
 
 interface LanguageContextType {
   currentLanguage: string;
@@ -14,10 +14,11 @@ export const [LanguageProvider, useLanguage] = createContextHook((): LanguageCon
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
 
   useEffect(() => {
-    const deviceLanguage = Localization.locale.startsWith('de') ? 'de' : 'en';
-    if (i18n.language !== deviceLanguage) {
-      i18n.changeLanguage(deviceLanguage);
-      setCurrentLanguage(deviceLanguage);
+    const deviceLanguage = getLocales()[0]?.languageCode || 'en';
+    const targetLanguage = deviceLanguage.startsWith('de') ? 'de' : 'en';
+    if (i18n.language !== targetLanguage) {
+      i18n.changeLanguage(targetLanguage);
+      setCurrentLanguage(targetLanguage);
     }
   }, []);
 
