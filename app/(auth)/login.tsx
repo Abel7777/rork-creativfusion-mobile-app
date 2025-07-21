@@ -11,18 +11,25 @@ export default function LoginScreen() {
   const theme = useTheme();
   const { login } = useAuth();
   const { t } = useLanguage();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('demo@creativfusion.com');
+  const [password, setPassword] = useState('password');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!email || !password) {
       Alert.alert(t('common.error'), t('login.fillAllFields'));
       return;
     }
     
-    // Simulate login
-    login();
-    router.replace('/(tabs)/showcase');
+    setIsLoading(true);
+    const result = await login(email, password);
+    setIsLoading(false);
+    
+    if (result.success) {
+      router.replace('/(tabs)/showcase');
+    } else {
+      Alert.alert(t('common.error'), result.error || 'Login failed');
+    }
   };
 
   const handleSignUpPress = () => {
@@ -52,6 +59,7 @@ export default function LoginScreen() {
             onChangeText={setEmail}
             keyboardType="email-address"
             autoCapitalize="none"
+            editable={!isLoading}
           />
           
           <TextInput
@@ -65,12 +73,14 @@ export default function LoginScreen() {
             value={password}
             onChangeText={setPassword}
             secureTextEntry
+            editable={!isLoading}
           />
 
           <Button 
-            title={t('login.signIn')} 
+            title={isLoading ? 'Signing In...' : t('login.signIn')} 
             onPress={handleLogin}
             style={styles.loginButton}
+            disabled={isLoading}
           />
 
           <Button 
@@ -78,6 +88,7 @@ export default function LoginScreen() {
             onPress={handleSignUpPress}
             style={[styles.signupButton, { backgroundColor: 'transparent', borderWidth: 1, borderColor: theme.colors.accent }]}
             textStyle={{ color: theme.colors.accent }}
+            disabled={isLoading}
           />
         </View>
       </View>

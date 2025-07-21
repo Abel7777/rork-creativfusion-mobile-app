@@ -3,8 +3,16 @@ import { View, StyleSheet, Pressable, Image } from 'react-native';
 import { useTheme } from '@/context/ThemeProvider';
 import { useLanguage } from '@/context/LanguageProvider';
 import Typography from '@/components/Typography';
-import { Product } from '@/mocks/products';
 import { router } from 'expo-router';
+
+interface Product {
+  id: string;
+  title: string;
+  price: number;
+  category: 'aiArt' | 'music' | 'prints';
+  imageUrl: string;
+  description: string;
+}
 
 interface ProductCardProps {
   product: Product;

@@ -3,8 +3,14 @@ import { View, StyleSheet, Pressable } from 'react-native';
 import { useTheme } from '@/context/ThemeProvider';
 import { useLanguage } from '@/context/LanguageProvider';
 import Typography from '@/components/Typography';
-import { VaultCategory } from '@/mocks/vault';
 import { Ionicons } from '@expo/vector-icons';
+
+interface VaultCategory {
+  id: string;
+  titleKey: string;
+  icon: string;
+  count: number;
+}
 
 interface VaultCardProps {
   category: VaultCategory;

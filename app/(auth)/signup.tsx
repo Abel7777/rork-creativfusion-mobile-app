@@ -9,13 +9,14 @@ import { router } from 'expo-router';
 
 export default function SignupScreen() {
   const theme = useTheme();
-  const { login } = useAuth();
+  const { signup } = useAuth();
   const { t } = useLanguage();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSignup = () => {
+  const handleSignup = async () => {
     if (!email || !password || !confirmPassword) {
       Alert.alert(t('common.error'), t('signup.fillAllFields'));
       return;
@@ -26,9 +27,15 @@ export default function SignupScreen() {
       return;
     }
     
-    // Simulate signup and auto-login
-    login();
-    router.replace('/(tabs)/showcase');
+    setIsLoading(true);
+    const result = await signup(email, password);
+    setIsLoading(false);
+    
+    if (result.success) {
+      router.replace('/(tabs)/showcase');
+    } else {
+      Alert.alert(t('common.error'), result.error || 'Signup failed');
+    }
   };
 
   const handleSignInPress = () => {
@@ -58,6 +65,7 @@ export default function SignupScreen() {
             onChangeText={setEmail}
             keyboardType="email-address"
             autoCapitalize="none"
+            editable={!isLoading}
           />
           
           <TextInput
@@ -71,6 +79,7 @@ export default function SignupScreen() {
             value={password}
             onChangeText={setPassword}
             secureTextEntry
+            editable={!isLoading}
           />
 
           <TextInput
@@ -84,12 +93,14 @@ export default function SignupScreen() {
             value={confirmPassword}
             onChangeText={setConfirmPassword}
             secureTextEntry
+            editable={!isLoading}
           />
 
           <Button 
-            title={t('signup.createAccount')} 
+            title={isLoading ? 'Creating Account...' : t('signup.createAccount')} 
             onPress={handleSignup}
             style={styles.signupButton}
+            disabled={isLoading}
           />
 
           <Button 
@@ -97,6 +108,7 @@ export default function SignupScreen() {
             onPress={handleSignInPress}
             style={[styles.loginButton, { backgroundColor: 'transparent', borderWidth: 1, borderColor: theme.colors.accent }]}
             textStyle={{ color: theme.colors.accent }}
+            disabled={isLoading}
           />
         </View>
       </View>

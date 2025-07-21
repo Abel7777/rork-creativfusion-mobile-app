@@ -7,7 +7,6 @@ import { StatusBar } from "expo-status-bar";
 import { ThemeProvider } from "@/context/ThemeProvider";
 import { AuthProvider, useAuth } from "@/context/AuthProvider";
 import { LanguageProvider } from "@/context/LanguageProvider";
-import { Redirect } from "expo-router";
 import { trpc, trpcClient } from "@/lib/trpc";
 import '@/config/i18n';
 
@@ -16,22 +15,13 @@ SplashScreen.preventAutoHideAsync();
 
 const queryClient = new QueryClient();
 
-function RootLayoutNav() {
-  const { isAuthenticated } = useAuth();
-
-  if (!isAuthenticated) {
-    return <Redirect href="/(auth)/login" />;
-  }
-
-  return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-    </Stack>
-  );
-}
-
 function AppContent() {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isLoading } = useAuth();
+
+  if (isLoading) {
+    // You could show a loading screen here
+    return null;
+  }
 
   return (
     <Stack screenOptions={{ headerShown: false }}>

@@ -1,20 +1,40 @@
 import React from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList, ActivityIndicator } from 'react-native';
 import { useTheme } from '@/context/ThemeProvider';
 import { useLanguage } from '@/context/LanguageProvider';
 import Typography from '@/components/Typography';
 import VaultCard from '@/components/VaultCard';
-import { mockVaultCategories } from '@/mocks/vault';
+import { trpc } from '@/lib/trpc';
 
 export default function VaultScreen() {
   const theme = useTheme();
   const { t } = useLanguage();
 
-  const renderCategory = ({ item, index }: { item: typeof mockVaultCategories[0], index: number }) => (
+  const { data: categories, isLoading, error } = trpc.vault.categories.useQuery();
+
+  const renderCategory = ({ item, index }: { item: any, index: number }) => (
     <View style={[styles.categoryContainer, { marginRight: index % 2 === 0 ? 8 : 0, marginLeft: index % 2 === 1 ? 8 : 0 }]}>
       <VaultCard category={item} />
     </View>
   );
+
+  if (isLoading) {
+    return (
+      <View style={[styles.container, styles.centered, { backgroundColor: theme.colors.primaryBackground }]}>
+        <ActivityIndicator size="large" color={theme.colors.accent} />
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+      <View style={[styles.container, styles.centered, { backgroundColor: theme.colors.primaryBackground }]}>
+        <Typography variant="body" style={{ color: theme.colors.secondaryText }}>
+          Error loading vault
+        </Typography>
+      </View>
+    );
+  }
 
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.primaryBackground }]}>
@@ -28,7 +48,7 @@ export default function VaultScreen() {
       </View>
 
       <FlatList
-        data={mockVaultCategories}
+        data={categories || []}
         renderItem={renderCategory}
         numColumns={2}
         contentContainerStyle={styles.categoriesContainer}
@@ -42,6 +62,10 @@ export default function VaultScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  centered: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   header: {
     paddingHorizontal: 20,
