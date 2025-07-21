@@ -1,12 +1,12 @@
 import createContextHook from '@nkzw/create-context-hook';
 import { useState, useEffect } from 'react';
-import { useTranslation, TFunction } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { getLocales } from 'expo-localization';
 
 interface LanguageContextType {
   currentLanguage: string;
   changeLanguage: (language: string) => void;
-  t: TFunction;
+  t: (key: string, options?: any) => string;
 }
 
 export const [LanguageProvider, useLanguage] = createContextHook((): LanguageContextType => {
