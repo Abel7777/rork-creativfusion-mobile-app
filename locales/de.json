@@ -31,7 +31,12 @@
   "store": {
     "title": "Manufaktur",
     "description": "Durchsuchen und kaufen Sie kreative Assets",
-    "shopNow": "Jetzt einkaufen"
+    "shopNow": "Jetzt einkaufen",
+    "filters": {
+      "aiArt": "KI-Kunst",
+      "music": "Musik",
+      "prints": "Drucke"
+    }
   },
   "coCreator": {
     "title": "Co-Creator",
@@ -41,14 +46,27 @@
   "vault": {
     "title": "Tresor",
     "description": "Greifen Sie auf Ihre gesicherten kreativen Assets zu",
-    "openVault": "Tresor öffnen"
+    "openVault": "Tresor öffnen",
+    "categories": {
+      "music": "Musikbibliothek",
+      "tutorials": "Tutorials",
+      "projects": "Meine Projekte",
+      "assets": "Digitale Assets"
+    }
   },
   "concierge": {
     "title": "Salon",
-    "description": "Erhalten Sie persönliche Unterstützung und Support",
-    "contact": "Kontakt"
+    "description": "Unser engagierter Concierge-Service bietet personalisierte Unterstützung für alle Ihre kreativen Bedürfnisse. Ob Sie nach maßgeschneiderter Kunst suchen, Hilfe bei einem Projekt benötigen oder Expertenrat zur kreativen Ausrichtung wünschen - unser Team hilft Ihnen dabei, Ihre Vision zu verwirklichen.",
+    "contact": "Kontakt",
+    "bookButton": "Termin buchen"
+  },
+  "productDetail": {
+    "title": "Produktdetails",
+    "addToCart": "In den Warenkorb",
+    "description": "Produktbeschreibung"
   },
   "common": {
-    "error": "Fehler"
+    "error": "Fehler",
+    "price": "{{amount}}€"
   }
 }

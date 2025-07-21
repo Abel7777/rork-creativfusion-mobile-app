@@ -31,7 +31,12 @@
   "store": {
     "title": "Store",
     "description": "Browse and purchase creative assets",
-    "shopNow": "Shop Now"
+    "shopNow": "Shop Now",
+    "filters": {
+      "aiArt": "AI Art",
+      "music": "Music",
+      "prints": "Prints"
+    }
   },
   "coCreator": {
     "title": "Co-Creator",
@@ -41,14 +46,27 @@
   "vault": {
     "title": "Vault",
     "description": "Access your secured creative assets",
-    "openVault": "Open Vault"
+    "openVault": "Open Vault",
+    "categories": {
+      "music": "Music Library",
+      "tutorials": "Tutorials",
+      "projects": "My Projects",
+      "assets": "Digital Assets"
+    }
   },
   "concierge": {
     "title": "Concierge",
-    "description": "Get personalized assistance and support",
-    "contact": "Contact"
+    "description": "Our dedicated concierge service provides personalized assistance for all your creative needs. Whether you're looking for custom artwork, need help with a project, or want expert advice on creative direction, our team is here to help you achieve your vision.",
+    "contact": "Contact",
+    "bookButton": "Book Appointment"
+  },
+  "productDetail": {
+    "title": "Product Details",
+    "addToCart": "Add to Cart",
+    "description": "Product Description"
   },
   "common": {
-    "error": "Error"
+    "error": "Error",
+    "price": "${{amount}}"
   }
 }
